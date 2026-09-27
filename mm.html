@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>movie ticket Booking</title>
+
+
+    <h2><u>Movie Ticket booking System</u></h2>
+    <style>
+        body {
+            font-family: arial;
+            width: 800px;
+            height: 500px;
+            text-align: center display: block;
+            margin-left: 40px;
+
+        }
+
+        h2 {
+            font-size: 50px;
+            font-style: oblique;
+            color: blue;
+            display: block;
+        }
+
+        .customer {
+            background-color: white;
+            color: rgb(51, 8, 91);
+            height: 36px;
+            width: 300px;
+            margin: 4px;
+            border-style: groove;
+            border-radius: 3px;
+            border-width: 2px;
+            font-weight: bolder;
+            display: block;
+            margin-left: 40px;
+            margin-bottom: 16px;
+        }
+
+        select {
+            background-color: rgb(175, 229, 219);
+            border-radius: 4px;
+            height: 40px;
+            width: 150px;
+            margin-left: 40px;
+            margin-bottom: 16px;
+
+        }
+
+        .tickets {
+            background-color: white;
+            color: rgb(51, 8, 91);
+            height: 36px;
+            width: 300px;
+            margin: 4px;
+            border-style: groove;
+            border-radius: 3px;
+            border-width: 2px;
+            font-weight: bolder;
+            display: block;
+            margin-left: 40px;
+            margin-bottom: 25px;
+        }
+
+        .button {
+            background-color: white;
+            color: rgb(21, 154, 141);
+            border-color: rgb(0, 255, 229);
+            border-radius: 8px;
+            height: 50;
+            width: 120px;
+            font-weight: bold;
+            margin-left: 40px;
+            border-width: 4px;
+            transition: 10px, 10, 10px black;
+            box-shadow: rgb(82, 71, 71);
+            margin-bottom: 30px;
+
+        }
+
+        .button:hover {
+            opacity: 0.7s;
+        }
+
+        .button:active {
+            opacity: 0.3;
+        }
+
+        .table1 {
+            border-color: black;
+            color: gray;
+            border-width: 5px;
+            border-style: bold;
+            height: 100%;
+            width: 600px;
+            margin-right: 1px;
+            border-collapse: collapse;
+
+        }
+
+        table,
+        tr {
+            height: 8px;
+            width: 300px;
+            border-width: 1px;
+            border-style: double;
+        }
+
+        table,
+        th,
+        td {
+            border: 2px solid black;
+            border-style: double;
+        }
+
+        th,
+        td {
+            padding: 10px;
+            text-align: center;
+            border-style: solid;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+
+        <input class="customer" type="text" id="customer" placeholder="CustomerName">
+
+        <select id="movie">
+
+            <option>durandar</option>
+            <option>Katera</option>
+            <option>Devil</option>
+            <option>RRR</option>
+            <option>Toxic</option>
+            <option>Ramayana</option>
+
+        </select>
+
+        <input class="tickets" type="number" id="tickets" placeholder="No of Tickets">
+
+
+        <button class="button" onclick="bookTicket()">Booking</button>
+
+        <table class="table1" id="movieTable">
+            <tr>
+                <th>CustomerName</th>
+                <th>movie</th>
+                <th>Tickets</th>
+                <th>total Price</th>
+                <th>Action</th>
+
+            </tr>
+        </table>
+
+    </div>
+    <script>
+        function bookTicket() {
+
+            let customer =
+                document.getElementById("customer").value;
+            if (/^[A-Za-z]+$/.test(customer)) {
+                alert(" customername is alright");
+            }
+            else {
+            alert("please enter letters");
+            }
+
+            let movie =
+                document.getElementById("movie").value;
+
+            let tickets =
+                document.getElementById("tickets").value;
+            if (customer == "" || tickets == "") {
+                alert("fill all Fields");
+                return;
+            }
+            let total = tickets * 150;
+            let row =
+                document.getElementById("movieTable").insertRow();
+
+            row.insertCell(0).innerHTML = customer;
+            row.insertCell(1).innerHTML = movie;
+            row.insertCell(2).innerHTML = tickets;
+            row.insertCell(3).innerHTML = "₹" + total;
+
+            row.insertCell(4).innerHTML =
+                "<button onclick='cancelTicket(this)'>Cancel</button>";
+
+            clearfields();
+        }
+        function cancelTicket(btn) {
+
+            btn.parentNode.parentNode.remove();
+        }
+        function clearfields() {
+            document.getElementById("customer").value = "";
+            document.getElementById("tickets").value = "";
+        }
+
+    </script>
+
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
